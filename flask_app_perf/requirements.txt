@@ -1,0 +1,6 @@
+Flask
+PyJWT
+requests
+Werkzeug
+python-dotenv
+Locust
