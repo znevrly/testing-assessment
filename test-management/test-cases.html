@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>test-cases.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="test-cases-for-registered-user-login-from-a-new-device">Test Cases for Registered User Login From a New Device</h1>
+<h2 id="test-case-1-successful-login">Test Case 1: Successful Login</h2>
+<p><strong>Description</strong>: Registered user can log in successfully from a new device.</p>
+<ul>
+<li>
+<p><strong>Preconditions</strong>:</p>
+<ul>
+<li>User account exists in the system.</li>
+<li>User has access to the phone number registered with the account.</li>
+</ul>
+</li>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Navigate to the login page.</li>
+<li>Click on the &quot;Login&quot; button.</li>
+<li>Enter a valid phone number and password.</li>
+<li>Click on the &quot;Next&quot; button.</li>
+<li>Enter the OTP received via SMS.</li>
+<li>Click on the &quot;Login&quot; button.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The system validates the phone number, password, and OTP.</li>
+<li>User is logged in successfully.</li>
+<li>A success message is displayed.</li>
+<li>SMS notification is sent to the user about the new device login.</li>
+<li>The user is logged out from all other devices.</li>
+<li>The user is redirected to the home page.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-2-invalid-phone-number">Test Case 2: Invalid Phone Number</h2>
+<p><strong>Description</strong>: Prevents login when an invalid phone number is entered.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Navigate to the login page.</li>
+<li>Enter an invalid phone number and a valid password.</li>
+<li>Click on the &quot;Next&quot; button.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>An error message is displayed indicating an invalid phone number.</li>
+<li>The user is not allowed to proceed to OTP entry.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-3-invalid-password">Test Case 3: Invalid Password</h2>
+<p><strong>Description</strong>: Prevents login when an incorrect password is entered.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Navigate to the login page.</li>
+<li>Enter a valid phone number and an incorrect password.</li>
+<li>Click on the &quot;Next&quot; button.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>An error message is displayed indicating incorrect credentials.</li>
+<li>The user is not allowed to proceed to OTP entry.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-4-otp-validation-failure">Test Case 4: OTP Validation Failure</h2>
+<p><strong>Description</strong>: Prevents login when an incorrect OTP is entered.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Navigate to the login page.</li>
+<li>Enter a valid phone number and password.</li>
+<li>Click on the &quot;Next&quot; button.</li>
+<li>Enter an incorrect OTP.</li>
+<li>Click on the &quot;Login&quot; button.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>An error message is displayed indicating that the OTP is invalid.</li>
+<li>The user is prompted to re-enter the correct OTP or request a new one.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-5-sms-notification-on-successful-login">Test Case 5: SMS Notification on Successful Login</h2>
+<p><strong>Description</strong>: Verify that an SMS notification is sent</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Successfully log in from a new device (follow Test Case 1).</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>An SMS notification is sent to the registered phone number informing the user of the successful login.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-6-logout-from-other-devices">Test Case 6: Logout from Other Devices</h2>
+<p><strong>Description</strong>: Verify that the user is logged out from all other devices after a successful login from a new device.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Log in from Device A.</li>
+<li>Log in from Device B (new device).</li>
+<li>Check the session status on Device A.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The session on Device A is terminated, and the user is logged out.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-7-edge-case-login-with-blocked-account">Test Case 7 (Edge Case): Login with Blocked Account</h2>
+<p><strong>Description</strong>: Verify that the system prevents login for a blocked user account.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Attempt to log in with the phone number and password of a blocked account.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>An error message is displayed indicating that the account is blocked.</li>
+<li>The user is not allowed to proceed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-8-edge-case-no-internet-connection">Test Case 8 (Edge Case): No Internet Connection</h2>
+<p><strong>Description</strong>: Login attempts when there is no internet connection.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Attempt to log in without internet connection.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>An error message is displayed indicating no internet connectivity.</li>
+<li>The login attempt is not processed.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="test-cases-for-individual-investor---upgrade-to-premium">Test Cases for Individual Investor - Upgrade to Premium</h1>
+<h2 id="test-case-1-successful-upgrade-to-premium">Test Case 1: Successful Upgrade to Premium</h2>
+<p><strong>Description</strong>: User can successfully upgrade to a premium account.</p>
+<ul>
+<li>
+<p><strong>Preconditions</strong>:</p>
+<ul>
+<li>The user is a verified individual investor.</li>
+<li>The user has a regular account.</li>
+</ul>
+</li>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Log in to the system.</li>
+<li>Navigate to the &quot;Upgrade to Premium&quot; section.</li>
+<li>Click on the <strong>&quot;Upgrade to Premium&quot;</strong> button.</li>
+<li>Select one of the qualification options:
+<ul>
+<li>&quot;Assets worth 3 million SAR.&quot;</li>
+<li>&quot;Experience in the financial sector for at least 3 years.&quot;</li>
+<li>&quot;Finance or investment certification from a recognized organization.&quot;</li>
+</ul>
+</li>
+<li>Upload the required documents for the selected qualification.</li>
+<li>Submit the documents.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The system validates the uploaded documents.</li>
+<li>A notification is sent to the compliance department for review.</li>
+<li>The relationship manager is notified of the request status.</li>
+<li>The user receives a notification confirming successful document upload.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-2-validation-of-missing-qualification-selection">Test Case 2: Validation of Missing Qualification Selection</h2>
+<p><strong>Description</strong>: User cannot proceed without selecting at least one qualification type.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Navigate to the &quot;Upgrade to Premium&quot; section.</li>
+<li>Click on the <strong>&quot;Upgrade to Premium&quot;</strong> button.</li>
+<li>Attempt to proceed without selecting a qualification type.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>An error message is displayed.</li>
+<li>The user cannot proceed to the document upload step.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-3-validation-of-missing-documents">Test Case 3: Validation of Missing Documents</h2>
+<p><strong>Description</strong>: User cannot proceed without uploading the required documents.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Navigate to the &quot;Upgrade to Premium&quot; section.</li>
+<li>Select a qualification type.</li>
+<li>Attempt to proceed without uploading documents.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>An error message is displayed.</li>
+<li>The user cannot submit the request.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-4-compliance-review-and-approval">Test Case 4: Compliance Review and Approval</h2>
+<p><strong>Description</strong>: Compliance department can view, review, and approve the upgrade request.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Submit a premium upgrade request with valid documents.</li>
+<li>Log in as a compliance department staff member.</li>
+<li>Navigate to the pending requests.</li>
+<li>Review the submitted documents.</li>
+<li>Approve or reject the request.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The compliance department can view the user's request and uploaded documents.</li>
+<li>When approved, the request status is updated, and the relationship manager and user are notified.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-5-notification-to-relationship-manager">Test Case 5: Notification to Relationship Manager</h2>
+<p><strong>Description</strong>: Relationship manager is notified about the request status.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Submit a premium upgrade request with valid documents.</li>
+<li>Log in as a compliance department staff member and approve the request.</li>
+<li>Verify the relationship manager's notification inbox.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The relationship manager receives a notification about the request status.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-6-user-notification-on-document-upload">Test Case 6: User Notification on Document Upload</h2>
+<p><strong>Description</strong>: User receives a notification upon successful document upload.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Submit a premium upgrade request with valid documents.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The user receives a notification that documents were uploaded successfully.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-7-edge-case-rejection-by-compliance-department">Test Case 7 (Edge Case): Rejection by Compliance Department</h2>
+<p><strong>Description</strong>: Verify the process when the compliance department rejects an upgrade request.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Submit a premium upgrade request with valid documents.</li>
+<li>Log in as a compliance department staff member.</li>
+<li>Review the request and reject it.</li>
+<li>Verify the notifications sent to the user and relationship manager.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The compliance department can reject the request with a reason.</li>
+<li>The user and relationship manager are notified of the rejection and the reason.</li>
+</ul>
+</li>
+</ul>
+<h3 id="test-case-8-edge-case-document-virus-or-malicious-code-detection">Test Case 8 (Edge Case): Document Virus or Malicious Code Detection</h3>
+<p><strong>Description</strong>: Checks uploaded documents for viruses or malicious code and prevents submission if any are detected.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Navigate to the &quot;Upgrade to Premium&quot; section.</li>
+<li>Select a qualification type.</li>
+<li>Attempt to upload a document containing a virus or malicious code.</li>
+<li>Submit the request.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The system scans the uploaded document for viruses or malicious code.</li>
+<li>If a threat is detected:
+<ul>
+<li>The upload is rejected.</li>
+<li>An error message is displayed.</li>
+</ul>
+</li>
+<li>If no threats are detected:
+<ul>
+<li>The document upload proceeds as expected.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="test-cases-for-approval-notifications">Test Cases for Approval Notifications</h1>
+<h2 id="test-case-1-approval-notification-to-loan-requester">Test Case 1: Approval Notification to Loan Requester</h2>
+<p><strong>Description</strong>: Loan requester receives an SMS notification upon final approval.</p>
+<ul>
+<li>
+<p><strong>Preconditions</strong>:</p>
+<ul>
+<li>The loan request has been approved by all relevant departments and the relationship manager.</li>
+</ul>
+</li>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Ensure the loan request is approved at all stages.</li>
+<li>Finalize the approval in the system.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The system sends an SMS notification to the loan requester indicating the approval status.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-2-rejection-notification-during-approval-process">Test Case 2: Rejection Notification During Approval Process</h2>
+<p><strong>Description</strong>: Relationship manager is notified of a rejection at any stage during the approval process.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Submit a loan request for approval.</li>
+<li>Reject the loan request at any intermediate approval stage with a specified reason.</li>
+<li>Check the notification sent to the relationship manager.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The system notifies the relationship manager of the rejection.</li>
+<li>The notification includes the reason for the rejection.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="test-cases-for-departments-approval">Test Cases for Departments Approval</h1>
+<h2 id="test-case-1-approving-a-loan-request-in-review">Test Case 1: Approving a Loan Request in Review</h2>
+<p><strong>Description</strong>: Department staff member can review and approve a loan request in their department.</p>
+<ul>
+<li>
+<p><strong>Preconditions</strong>:</p>
+<ul>
+<li>The loan request is currently under review by the specific department.</li>
+<li>The staff member has the necessary permissions to approve requests.</li>
+</ul>
+</li>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Log in as a department staff member.</li>
+<li>Navigate to the list of loan requests in review.</li>
+<li>Open the details of a loan request in review.</li>
+<li>Click the <strong>&quot;Approve&quot;</strong> button.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The system marks the request as approved for the specific department.</li>
+<li>A success message is displayed</li>
+<li>The approval is logged with the staff member’s details and the timestamp.</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-2-viewing-department-approvals">Test Case 2: Viewing Department Approvals</h2>
+<p><strong>Description</strong>: Verify that the system displays a section listing all departments that have approved a loan request.</p>
+<ul>
+<li>
+<p><strong>Preconditions</strong>:</p>
+<ul>
+<li>The loan request has been approved by multiple departments.</li>
+</ul>
+</li>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Log in as a system user.</li>
+<li>Navigate to the details of a specific loan request.</li>
+<li>View the section displaying department approvals.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The section lists all departments that have approved the request.</li>
+<li>Each entry includes:
+<ul>
+<li>Department name.</li>
+<li>Staff member who approved the request.</li>
+<li>Timestamp of the approval.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-2-edge-case-approving-a-request-already-rejected">Test Case 2 (Edge Case): Approving a Request Already Rejected</h2>
+<p><strong>Description</strong>: Verify that a department staff member cannot approve a loan request that has already been rejected.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Reject a loan request in review.</li>
+<li>Attempt to approve the rejected request.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The system prevents approval of rejected requests.</li>
+<li>An error message is displayed.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="test-cases-for-corporate-investor---commercial-registration-verification">Test Cases for Corporate Investor - Commercial Registration Verification</h1>
+<h2 id="test-case-1-valid-commercial-registration-number">Test Case 1: Valid Commercial Registration Number</h2>
+<p><strong>Description</strong>: Verify that the system processes a valid commercial registration number through the third-party service [X].</p>
+<ul>
+<li>
+<p><strong>Preconditions</strong>:</p>
+<ul>
+<li>The system is integrated with [X].</li>
+<li>A valid commercial registration number is provided.</li>
+</ul>
+</li>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Enter a valid commercial registration number.</li>
+<li>Submit the number for verification.</li>
+<li>The system sends the registration number to [X].</li>
+<li>Wait for the result from [X].</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li><input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">that the number is valid.</label></li>
+<li>The user is allowed to proceed to the validation process.</li>
+</ul>
+</li>
+</ul>
+<h1 id="test-case-2-invalid-commercial-registration-number">Test Case 2: Invalid Commercial Registration Number</h1>
+<p><strong>Description</strong>: Verify that the system handles an invalid commercial registration number.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Enter an invalid commercial registration number.</li>
+<li>Submit the number for verification.</li>
+<li>The system sends the registration number to [X].</li>
+<li>Wait for the result from [X].</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li><input type="checkbox" id="checkbox1" checked="true"><label for="checkbox1">indicating the number is invalid.</label></li>
+<li>An error message is displayed.</li>
+<li>The user is prompted to enter a new commercial registration number.</li>
+<li>After entering a new number, the system restarts the verification process with [X].</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-3-validation-of-start-date-negative">Test Case 3: Validation of Start Date (Negative)</h2>
+<p><strong>Description</strong>: Verify the system's behavior when the company start date is less than two years ago.</p>
+<ul>
+<li>
+<p><strong>Preconditions</strong>:</p>
+<ul>
+<li>The system is integrated with [X].</li>
+<li><input type="checkbox" id="checkbox2" checked="true"><label for="checkbox2">is successful.</label></li>
+</ul>
+</li>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Enter a valid commercial registration number.</li>
+<li>Submit the number for verification.</li>
+<li><input type="checkbox" id="checkbox3" checked="true"><label for="checkbox3">and receives the result, including the start date.</label></li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>If the start date is less than 2 years ago:
+<ul>
+<li>The system notifies the user.</li>
+</ul>
+</li>
+<li>If the start date is more than 2 years ago:
+<ul>
+<li>The user is allowed to proceed to the next step.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-case-3-edge-case-duplicate-commercial-registration-number">Test Case 3 (Edge Case): Duplicate Commercial Registration Number</h2>
+<p><strong>Description</strong>: Verify that the system handles duplicate registration numbers already verified in the system.</p>
+<ul>
+<li>
+<p><strong>Steps</strong>:</p>
+<ol>
+<li>Enter a commercial registration number already verified in the system.</li>
+<li>Submit the number for verification.</li>
+</ol>
+</li>
+<li>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>The system detects the duplicate and displays a message.</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>
